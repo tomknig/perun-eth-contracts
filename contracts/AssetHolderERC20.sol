@@ -14,11 +14,11 @@
 
 // SPDX-License-Identifier: Apache-2.0
 
-pragma solidity ^0.8.0;
+pragma solidity 0.8.25;
 pragma experimental ABIEncoderV2;
 
-import "../vendor/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
-import "../vendor/openzeppelin-contracts/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "./AssetHolder.sol";
 
 /**
