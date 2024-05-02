@@ -14,7 +14,7 @@
 
 // SPDX-License-Identifier: Apache-2.0
 
-pragma solidity 0.8.25;
+pragma solidity 0.8.24;
 pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
@@ -139,7 +139,7 @@ contract Adjudicator {
     )
     internal
     {
-        (Channel.Params memory params, Channel.State memory state) = 
+        (Channel.Params memory params, Channel.State memory state) =
             (channel.params, channel.state);
 
         requireValidParams(params, state);
@@ -228,7 +228,7 @@ contract Adjudicator {
     {
         require(params.ledgerChannel, "not ledger");
         requireValidParams(params, state);
-        
+
         concludeSingle(state);
         (uint256[][] memory outcome,) = forceConcludeRecursive(state, subStates, 0);
         pushOutcome(state.channelID, state.outcome.assets, params.participants, outcome);
@@ -312,7 +312,7 @@ contract Adjudicator {
     internal
     {
         (Dispute memory dispute, bool registered) = getDispute(state.channelID);
-        
+
         dispute.challengeDuration = uint64(params.challengeDuration);
         dispute.version = state.version;
         dispute.hasApp = Channel.hasApp(params);
@@ -449,7 +449,7 @@ contract Adjudicator {
 
             // Add outcome of subchannels.
             uint16[] memory indexMap = subAlloc.indexMap;
-            for (uint a = 0; a < assets.length; a++) {                
+            for (uint a = 0; a < assets.length; a++) {
                 for (uint p = 0; p < indexMap.length; p++) {
                     uint256 _subOutcome = subOutcome[a][p];
                     uint16 _p = indexMap[p];

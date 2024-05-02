@@ -14,7 +14,7 @@
 
 // SPDX-License-Identifier: Apache-2.0
 
-pragma solidity 0.8.25;
+pragma solidity 0.8.24;
 pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
@@ -133,7 +133,7 @@ abstract contract AssetHolder {
     function deposit(bytes32 fundingID, uint256 amount) external payable {
         depositCheck(fundingID, amount);
         holdings[fundingID] = holdings[fundingID].add(amount);
-        depositEnact(fundingID, amount);       
+        depositEnact(fundingID, amount);
         emit Deposited(fundingID, amount);
     }
 

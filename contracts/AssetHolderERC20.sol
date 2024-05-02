@@ -14,7 +14,7 @@
 
 // SPDX-License-Identifier: Apache-2.0
 
-pragma solidity 0.8.25;
+pragma solidity 0.8.24;
 pragma experimental ABIEncoderV2;
 
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
@@ -48,12 +48,12 @@ contract AssetHolderERC20 is AssetHolder {
 
 	/**
 	 * @notice Should not be called directly but only by the parent AssetHolder.
-	 * @dev Transferes `amount` tokens from `msg.sender` to `fundingID`.	
+	 * @dev Transferes `amount` tokens from `msg.sender` to `fundingID`.
  	 */
 	function depositEnact(bytes32, uint256 amount) internal override {
 		require(token.transferFrom(msg.sender, address(this), amount), "transferFrom failed");
 	}
-	
+
 	/**
    * @notice Should not be called directly but only by the parent AssetHolder.
    * @dev Withdraws tokens for channel participant authorization.participant

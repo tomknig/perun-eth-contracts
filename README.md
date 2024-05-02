@@ -13,14 +13,17 @@
 This repository contains the Ethereum smart contracts for [go-perun](https://github.com/hyperledger-labs/go-perun)'s Ethereum backend.
 
 ## Security Disclaimer
+
 The smart contracts presented in this directory are under active development and are not ready for production use.
 The authors take no responsibility for any loss of digital assets or other damage caused by their use.
 
 ## Contracts
+
 Perun's Generalized State Channels Framework uses a set of interconnected smart contracts to define the on-chain logic for channel deposits, disputes, settlements and withdrawals.
 For more detailed information, check out the [documentation](https://labs.hyperledger.org/perun-doc/index.html).
 
 ### Asset Holder
+
 Asset holders are singleton contracts that hold the assets for ledger channels.
 They are deployed once per asset (ETH, ERC-20, ...) and are shared between all channels that reference the same Adjudicator contract for channel disputing and closing.
 
@@ -29,6 +32,7 @@ The outcome of closed channels are set by the Adjudicator on the channel's asset
 After the outcome has been set, channel participants can withdraw their assets from the asset holders, sending a Withdrawal Authorization that has to be signed by the respective channel participant.
 
 ### Adjudicator
+
 The Adjudicator contract is called to dispute or close a channel.
 It interprets channel states and sets finalized channel outcomes on the asset holders.
 
@@ -43,21 +47,47 @@ After state registration, the other channel participants have the chance to `ref
 After the challenge period is over, the channel outcome can either be finalized on the asset holders by calling `conclude` or the app's state can be progressed on-chain by calling `progress`.
 
 ### App Contracts
+
 State Channel apps define a single method, `validTransition`, which defines the app-specific state transition rules.
 When a channel state is progressed on-chain on the Adjudicator by calling `progress`, the Adjudicator reads the address of the channel app from the channel parameters and, after performing generic state progression checks, calls the `validTransition` method on the app.
 It is assumed to revert if any app-specific check fails.
 
-## Testing
-The repository must be cloned recursively including [submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
-[Yarn](https://yarnpkg.com) is expected to be installed globally.
-To run the tests, run
-```sh
-$ yarn
-$ yarn build
-$ yarn test
+## Developing
+
+### Compiling
+
+To compile the contracts and generate the typechain artifacts, you can run:
+
+```shell
+yarn build
+```
+
+### Linting
+
+You can lint Solidity files with
+
+```shell
+yarn lint
+```
+
+### Testing
+
+To run the tests, you can run:
+
+```shell
+yarn test
+```
+
+#### Generate test-coverage
+
+To generate test coverage information, you can run:
+
+```shell
+yarn test:coverage
 ```
 
 ## Copyright
+
 Copyright 2021 - See [NOTICE](NOTICE) file for copyright holders.
 Use of the source code is governed by the Apache 2.0 license that can be found in the [LICENSE file](LICENSE).
 

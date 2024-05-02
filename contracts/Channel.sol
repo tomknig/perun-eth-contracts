@@ -14,7 +14,7 @@
 
 // SPDX-License-Identifier: Apache-2.0
 
-pragma solidity 0.8.25;
+pragma solidity 0.8.24;
 pragma experimental ABIEncoderV2;
 
 import "./Sig.sol";
@@ -141,5 +141,5 @@ library Channel {
     /// @dev Returns whether the channel has an app.
     function hasApp(Params memory params) internal pure returns (bool) {
         return params.app != address(0);
-    } 
+    }
 }

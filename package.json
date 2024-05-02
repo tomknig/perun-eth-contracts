@@ -1,44 +1,44 @@
 {
-  "devDependencies": {
-    "@types/bn.js": "^5.1.5",
-    "@types/chai": "^4.3.14",
-    "@types/mocha": "^10.0.6",
-    "@types/node": "^20.12.8",
-    "bn.js": "^5.2.1",
-    "chai": "^5.1.0",
-    "openzeppelin-solidity": "^3.4.2",
-    "solhint": "^4.5.4",
-    "truffle": "5.11.5",
-    "truffle-assertions": "^0.9.2",
-    "typechain": "^8.3.2",
-    "typescript": "^5.4.5",
-    "web3": "^4.8.0"
-  },
+  "name": "perun-eth-contracts",
+  "version": "0.1.0",
+  "description": "",
+  "main": "none",
+  "license": "UNLICENSED",
   "scripts": {
-    "clean": "rm -rf ./build/",
-    "build:contracts": "truffle compile",
-    "build:types": "typechain --target truffle './build/**/*.json'",
-    "fix:truffle-typings": "sed -i.bak -e 's/= import(\"web3\")/= typeof import(\"web3\")/' node_modules/truffle-typings/index.d.ts",
-    "postbuild:types": "sed -i.bak -e 's/BigNumber/BN/g' -e '/bignumber\\.js/d' types/truffle-contracts/index.d.ts",
-    "build:js": "tsc -p .",
-    "build": "yarn build:contracts && yarn build:types && yarn fix:truffle-typings && yarn build:js",
-    "test": "truffle test"
+    "lint": "solhint 'contracts/**/*.sol'",
+    "build": "hardhat compile",
+    "test": "HARDHAT_TESTING=true REPORT_GAS=true npx hardhat test",
+    "test:coverage": "HARDHAT_TESTING=true npx hardhat coverage",
+    "clean": "hardhat clean"
   },
-  "dependencies": {
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perun-network/perun-eth-contracts.git"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
+    "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-ignition": "^0.15.0",
+    "@nomicfoundation/hardhat-ignition-ethers": "^0.15.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.0",
     "@openzeppelin/contracts": "4.4.1",
-    "eth-gas-reporter": "^0.2.27",
+    "@typechain/ethers-v6": "^0.5.0",
+    "@typechain/hardhat": "^9.0.0",
+    "@types/chai": "^4.2.0",
+    "@types/mocha": ">=9.1.0",
+    "@types/node": ">=18.0.0",
+    "chai": "^4.2.0",
+    "ethers": "^6.4.0",
     "hardhat": "^2.22.3",
-    "solidity-coverage": "^0.8.12",
-    "truffle-error": "^0.0.5",
-    "truffle-typings": "^1.0.8",
-    "web3-eth": "^4.6.0",
-    "web3-utils": "^4.2.3"
+    "hardhat-gas-reporter": "^1.0.8",
+    "solhint": "^4.5.4",
+    "solidity-coverage": "^0.8.0",
+    "ts-node": ">=8.0.0",
+    "typechain": "^8.3.0",
+    "typescript": ">=4.5.0"
   },
-  "version": "0.0.0",
-  "os": [
-    "linux",
-    "darwin"
-  ],
   "engines": {
     "node": "20"
   },
