@@ -37,5 +37,8 @@
     "linux",
     "darwin"
   ],
+  "engines": {
+    "node": "20"
+  },
   "packageManager": "yarn@4.1.1"
 }
