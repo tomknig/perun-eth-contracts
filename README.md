@@ -86,6 +86,16 @@ To generate test coverage information, you can run:
 yarn test:coverage
 ```
 
+#### Generate gas usage report
+
+We are using [hardhat-gas-reporter](https://github.com/cgewecke/hardhat-gas-reporter) to generate gas usage reports based on our test scenarios.
+
+The generated gas usage report can be found in the [docs/GAS.md](./docs/GAS.md) file.
+
+```shell
+yarn test:gas
+```
+
 ## Copyright
 
 Copyright 2021 - See [NOTICE](NOTICE) file for copyright holders.

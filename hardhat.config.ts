@@ -1,5 +1,8 @@
 import { HardhatUserConfig } from "hardhat/config";
+
 import "@nomicfoundation/hardhat-toolbox";
+import "@nomicfoundation/hardhat-ethers";
+import "hardhat-gas-reporter";
 
 const config: HardhatUserConfig = {
   solidity: {
@@ -10,6 +13,11 @@ const config: HardhatUserConfig = {
         runs: 200,
       },
     },
+  },
+  gasReporter: {
+    reportFormat: "markdown",
+    outputFile: "docs/GAS.md",
+    noColors: true,
   },
 };
 

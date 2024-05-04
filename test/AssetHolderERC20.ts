@@ -1,6 +1,7 @@
+import { AssetHolderERC20 } from "../typechain-types/contracts/AssetHolderERC20";
+import { PerunToken } from "../typechain-types/contracts/PerunToken";
 import { expect } from "chai";
 import { ethers } from "hardhat";
-import { AssetHolderETH } from "../typechain-types/contracts/AssetHolderETH";
 import { genericAssetHolderTest } from "./AssetHolder";
 import {
   AssetHolderSetup,
@@ -8,8 +9,9 @@ import {
   DepositFn,
 } from "./utils/AssetHolderSetup";
 
-describe("AssetHolderETH", async () => {
-  let assetHolder: AssetHolderETH;
+describe("AssetHolderERC20", function () {
+  let token: PerunToken;
+  let assetHolder: AssetHolderERC20;
   let setup: AssetHolderSetup;
   let adjAddress: string;
 
@@ -18,8 +20,15 @@ describe("AssetHolderETH", async () => {
     const addresses = await Promise.all(accounts.map((a) => a.getAddress()));
     adjAddress = await accounts[9].getAddress();
 
-    const AssetHolderETH = await ethers.getContractFactory("AssetHolderETH");
-    assetHolder = await AssetHolderETH.deploy(adjAddress);
+    const PerunTokenFactory = await ethers.getContractFactory("PerunToken");
+    token = await PerunTokenFactory.deploy(accounts, ethers.parseEther("100"));
+    await token.waitForDeployment();
+
+    const perunTokenAddress = await token.getAddress();
+
+    const AssetHolderERC20 =
+      await ethers.getContractFactory("AssetHolderERC20");
+    assetHolder = await AssetHolderERC20.deploy(adjAddress, perunTokenAddress);
     await assetHolder.waitForDeployment();
 
     const deposit: DepositFn = async (fid, amount, overrides) => {
@@ -37,13 +46,18 @@ describe("AssetHolderETH", async () => {
       }
 
       const sender = await ethers.getSigner(fromAddress);
-      return setup.ah
+
+      const assetHolderAddress = await assetHolder.getAddress();
+      const approvalTransaction = await token
         .connect(sender)
-        .deposit(fid, amount, { value: amount, ...overrides });
+        .approve(assetHolderAddress, amount, { from: fromAddress });
+      await approvalTransaction.wait();
+
+      return setup.ah.connect(sender).deposit(fid, amount, overrides);
     };
 
     const balanceOf: BalanceOfFn = async (who) => {
-      return await ethers.provider.getBalance(who);
+      return await token.balanceOf(who);
     };
 
     setup = new AssetHolderSetup(assetHolder, addresses, deposit, balanceOf);
@@ -56,6 +70,6 @@ describe("AssetHolderETH", async () => {
   });
 
   it("runs generic asset holder tests", async () => {
-    genericAssetHolderTest("AssetHolderETH", setup);
+    genericAssetHolderTest("AssetHolderERC20", setup);
   });
 });

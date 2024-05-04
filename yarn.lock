@@ -769,7 +769,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nomicfoundation/hardhat-ethers@npm:^3.0.0":
+"@nomicfoundation/hardhat-ethers@npm:^3.0.5":
   version: 3.0.5
   resolution: "@nomicfoundation/hardhat-ethers@npm:3.0.5"
   dependencies:
@@ -782,7 +782,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nomicfoundation/hardhat-ignition-ethers@npm:^0.15.0":
+"@nomicfoundation/hardhat-ignition-ethers@npm:^0.15.2":
   version: 0.15.2
   resolution: "@nomicfoundation/hardhat-ignition-ethers@npm:0.15.2"
   peerDependencies:
@@ -795,7 +795,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nomicfoundation/hardhat-ignition@npm:^0.15.0":
+"@nomicfoundation/hardhat-ignition@npm:^0.15.2":
   version: 0.15.2
   resolution: "@nomicfoundation/hardhat-ignition@npm:0.15.2"
   dependencies:
@@ -812,7 +812,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nomicfoundation/hardhat-network-helpers@npm:^1.0.0":
+"@nomicfoundation/hardhat-network-helpers@npm:^1.0.10":
   version: 1.0.10
   resolution: "@nomicfoundation/hardhat-network-helpers@npm:1.0.10"
   dependencies:
@@ -1310,7 +1310,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/chai@npm:*, @types/chai@npm:^4.2.0":
+"@types/chai@npm:*, @types/chai@npm:4":
   version: 4.3.15
   resolution: "@types/chai@npm:4.3.15"
   checksum: 10c0/a942fe35f7043e131efd68ca1822463768c417dc4ab263d7ef00f36d046e9700e24fadd0a92777dd0ea7e83d969035235fcbba32f6bde785a6c6f10aca543a7b
@@ -1366,14 +1366,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mocha@npm:>=9.1.0":
+"@types/mocha@npm:^10.0.6":
   version: 10.0.6
   resolution: "@types/mocha@npm:10.0.6"
   checksum: 10c0/4526c9e88388f9e1004c6d3937c5488a39908810f26b927173c58d52b43057f3895627dc06538e96706e08b88158885f869ec6311f6b58fd72bdef715f26d6c3
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=18.0.0":
+"@types/node@npm:*, @types/node@npm:^20.12.8":
   version: 20.12.8
   resolution: "@types/node@npm:20.12.8"
   dependencies:
@@ -2041,7 +2041,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chai@npm:^4.2.0":
+"chai@npm:4":
   version: 4.4.1
   resolution: "chai@npm:4.4.1"
   dependencies:
@@ -2862,7 +2862,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ethers@npm:^6.4.0, ethers@npm:^6.7.0":
+"ethers@npm:^6.12.1, ethers@npm:^6.7.0":
   version: 6.12.1
   resolution: "ethers@npm:6.12.1"
   dependencies:
@@ -4909,20 +4909,21 @@ __metadata:
   resolution: "perun-eth-contracts@workspace:."
   dependencies:
     "@nomicfoundation/hardhat-chai-matchers": "npm:^2.0.0"
-    "@nomicfoundation/hardhat-ethers": "npm:^3.0.0"
-    "@nomicfoundation/hardhat-ignition": "npm:^0.15.0"
-    "@nomicfoundation/hardhat-ignition-ethers": "npm:^0.15.0"
-    "@nomicfoundation/hardhat-network-helpers": "npm:^1.0.0"
+    "@nomicfoundation/hardhat-ethers": "npm:^3.0.5"
+    "@nomicfoundation/hardhat-ignition": "npm:^0.15.2"
+    "@nomicfoundation/hardhat-ignition-ethers": "npm:^0.15.2"
+    "@nomicfoundation/hardhat-network-helpers": "npm:^1.0.10"
     "@nomicfoundation/hardhat-toolbox": "npm:^5.0.0"
     "@nomicfoundation/hardhat-verify": "npm:^2.0.0"
+    "@nomicfoundation/ignition-core": "npm:^0.15.2"
     "@openzeppelin/contracts": "npm:4.4.1"
     "@typechain/ethers-v6": "npm:^0.5.0"
     "@typechain/hardhat": "npm:^9.0.0"
-    "@types/chai": "npm:^4.2.0"
-    "@types/mocha": "npm:>=9.1.0"
-    "@types/node": "npm:>=18.0.0"
-    chai: "npm:^4.2.0"
-    ethers: "npm:^6.4.0"
+    "@types/chai": "npm:4"
+    "@types/mocha": "npm:^10.0.6"
+    "@types/node": "npm:^20.12.8"
+    chai: "npm:4"
+    ethers: "npm:^6.12.1"
     hardhat: "npm:^2.22.3"
     hardhat-gas-reporter: "npm:^1.0.8"
     solhint: "npm:^4.5.4"
